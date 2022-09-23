@@ -1,9 +1,10 @@
-# temp_next_ts_firebase
+# liveApp-react
 
 ## 使用技術
-- TypeScript
 - Next.js
-- Styled-components (CSS in JS)
+- TypeScript
+- CSS module
+- Sass
 - Storybook
 - Jest
-- Versel# liveApp-react
+- Versel
