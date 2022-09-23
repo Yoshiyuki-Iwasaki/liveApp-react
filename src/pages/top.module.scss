@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+}
+
+.listItem {
+  margin-top: 5rem;
+  width: calc(33% - 1rem);
+
+  &:first-child,
+  &:nth-child(2),
+  &:nth-child(3) {
+    margin-top: 0;
+  }
+}
+
+.list_txtArea {
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.list_ttl {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.list_txt {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
