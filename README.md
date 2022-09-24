@@ -3,7 +3,7 @@
 ## 使用技術
 - Next.js
 - TypeScript
-- CSS module
+- CSS modules
 - Sass
 - Storybook
 - Jest
