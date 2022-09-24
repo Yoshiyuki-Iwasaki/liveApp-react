@@ -16,14 +16,11 @@ const VideoDetailPage: NextPage = () => {
 
   const handleInput = (e: any) => {
     setInputData(e.target.value);
-    console.log("inputData", inputData);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("test");
     if (!inputData) return;
-    console.log("test02");
     setCommentData([
       {
         id: commentData.length + 1,
@@ -33,7 +30,6 @@ const VideoDetailPage: NextPage = () => {
       },
       ...commentData,
     ]);
-    console.log(commentData);
     setInputData("");
   };
   return (

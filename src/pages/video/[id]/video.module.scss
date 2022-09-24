@@ -11,11 +11,36 @@
 }
 .like,
 .comment {
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 .likeTtl,
 .commentTtl {
   margin-bottom: 1rem;
   font-size: 1.8rem;
   font-weight: 700;
+}
+
+.commentInput {
+  input {
+    font-size: 1.4rem;
+  }
+}
+
+.commentList {
+  margin-top: 2rem;
+}
+
+.commentListItem {
+  margin-top: 1.5rem;
+}
+
+.commentListDate {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.commentListContent {
+  margin-top: 0.5rem;
+  display: block;
+  font-size: 1.4rem;
 }

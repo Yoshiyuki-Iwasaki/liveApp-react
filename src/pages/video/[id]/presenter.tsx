@@ -36,27 +36,19 @@ const Presenter: React.FC<CommentFormType> = ({
       </div>
       <div className={style.comment}>
         <h2 className={style.commentTtl}>コメント</h2>
-        <p className={style.commentInputWrap}>
-          <form onSubmit={e => handleSubmit(e)}>
-            <input
-              placeholder="message"
-              value={inputData}
-              onChange={e => handleChange(e)}
-            />
-          </form>
-        </p>
+        <form className={style.commentInput} onSubmit={e => handleSubmit(e)}>
+          <input
+            placeholder="message"
+            value={inputData}
+            onChange={e => handleChange(e)}
+          />
+        </form>
         <ul className={style.commentList}>
           {commentData &&
             commentData.map((post: any, index: number) => (
               <li key={index} className={style.commentListItem}>
-                <p className={style.commentListTxtArea}>
-                  <span className={style.commentListDate}>
-                    {post.created_at}
-                  </span>
-                  <span className={style.commentListContent}>
-                    {post.message}
-                  </span>
-                </p>
+                <span className={style.commentListDate}>{post.created_at}</span>
+                <span className={style.commentListContent}>{post.message}</span>
               </li>
             ))}
         </ul>
