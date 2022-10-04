@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../../../layout";
 import style from "./video.module.scss";
+import dayjs from "dayjs";
 
 type CommentFormType = {
   commentData: any;
@@ -47,7 +48,9 @@ const Presenter: React.FC<CommentFormType> = ({
           {commentData &&
             commentData.map((post: any, index: number) => (
               <li key={index} className={style.commentListItem}>
-                <span className={style.commentListDate}>{post.created_at}</span>
+                <span className={style.commentListDate}>
+                  {dayjs(post.createdAt.toDate()).format("YYYY/MM/DD HH:mm")}
+                </span>
                 <span className={style.commentListContent}>{post.message}</span>
               </li>
             ))}

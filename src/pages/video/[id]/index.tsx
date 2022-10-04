@@ -1,37 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import Presenter from "./presenter";
-import comment from "../../../../commentData.json";
+import {
+  addDoc,
+  collection,
+  query,
+  serverTimestamp,
+  getDocs,
+  Timestamp,
+} from "firebase/firestore";
+import db from "../../../libs/firebase/client";
 
 export type commentDataType = {
   id: number;
   user_id: number;
-  created_at: any;
+  createdAt: Timestamp;
   message: string;
 };
 
 const VideoDetailPage: NextPage = () => {
   const [inputData, setInputData] = useState<string>();
-  const [commentData, setCommentData] = useState<any>(comment);
+  const [commentData, setCommentData] = useState<any>();
 
   const handleInput = (e: any) => {
     setInputData(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
     if (!inputData) return;
-    setCommentData([
-      {
-        id: commentData.length + 1,
-        user_id: `1`,
-        created_at: "12:00",
+    try {
+      const docRef = await addDoc(collection(db, "message"), {
+        id: new Date().getTime(),
+        videoId: 1,
+        userId: 1,
         message: inputData,
-      },
-      ...commentData,
-    ]);
+        createdAt: serverTimestamp(),
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
     setInputData("");
   };
+
+  useEffect(() => {
+    fetchMessage();
+  }, []);
+
+  const fetchMessage = async (): Promise<any> => {
+    const commentData = collection(db, "message");
+    getDocs(commentData).then(snapshot => {
+      snapshot && setCommentData(snapshot.docs.map(doc => ({ ...doc.data() })));
+    });
+  };
+
   return (
     <Presenter
       commentData={commentData}
