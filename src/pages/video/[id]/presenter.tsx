@@ -1,21 +1,13 @@
 import React from "react";
 import Layout from "../../../layout";
 import style from "./video.module.scss";
-import dayjs from "dayjs";
+import Comment from "../../../components/comment";
 
 type CommentFormType = {
   commentData: any;
-  inputData: any;
-  handleChange: any;
-  handleSubmit: any;
 };
 
-const Presenter: React.FC<CommentFormType> = ({
-  commentData,
-  inputData,
-  handleChange,
-  handleSubmit,
-}) => {
+const Presenter: React.FC<CommentFormType> = ({ commentData }) => {
   return (
     <Layout>
       <h1 className={style.ttl}>動画名が入ります。</h1>
@@ -35,27 +27,7 @@ const Presenter: React.FC<CommentFormType> = ({
         <h2 className={style.likeTtl}>いいね</h2>
         <button className={style.likeBtn}>いいねマーク</button>
       </div>
-      <div className={style.comment}>
-        <h2 className={style.commentTtl}>コメント</h2>
-        <form className={style.commentInput} onSubmit={e => handleSubmit(e)}>
-          <input
-            placeholder="message"
-            value={inputData}
-            onChange={e => handleChange(e)}
-          />
-        </form>
-        <ul className={style.commentList}>
-          {commentData &&
-            commentData.map((post: any, index: number) => (
-              <li key={index} className={style.commentListItem}>
-                <span className={style.commentListDate}>
-                  {dayjs(post.createdAt.toDate()).format("YYYY/MM/DD HH:mm")}
-                </span>
-                <span className={style.commentListContent}>{post.message}</span>
-              </li>
-            ))}
-        </ul>
-      </div>
+      <Comment commentData={commentData} />
     </Layout>
   );
 };
