@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import Presenter from "./presenter";
-import { collection, getDocs, Timestamp } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import db from "../../../libs/firebase/client";
-
-export type commentDataType = {
-  id: number;
-  user_id: number;
-  createdAt: Timestamp;
-  message: string;
-};
 
 const VideoDetailPage: NextPage = () => {
   const [commentData, setCommentData] = useState<any>();

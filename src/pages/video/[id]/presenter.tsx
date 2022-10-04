@@ -3,11 +3,11 @@ import Layout from "../../../layout";
 import style from "./video.module.scss";
 import Comment from "../../../components/comment";
 
-type CommentFormType = {
+type VideoDetailType = {
   commentData: any;
 };
 
-const Presenter: React.FC<CommentFormType> = ({ commentData }) => {
+const Presenter: React.FC<VideoDetailType> = ({ commentData }) => {
   return (
     <Layout>
       <h1 className={style.ttl}>動画名が入ります。</h1>
